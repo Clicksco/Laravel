@@ -1,6 +1,17 @@
 <?php
 return [
-    'APP_DEBUG'   => false,
-    'APP_KEY'     => '',
+    'APP'       => [
+        'KEY'   => '',
+    ],
 
+    'DATABASE'  => [
+        'DEFAULT'   => 'mysql',
+
+        'HOST'      => 'localhost',
+        'DATABASE'  => 'homestead',
+        'USERNAME'  => 'homestead',
+        'PASSWORD'  => 'secret',
+    ],
+
+    'SERVICES'  => [],
 ];
