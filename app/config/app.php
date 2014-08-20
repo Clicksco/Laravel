@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => $_ENV['APP_DEBUG'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'MhvZK2Ka85FfxVfcNhbOFratY7v9oYgN',
+	'key' => $_ENV['APP_KEY'],
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
