@@ -1,107 +1,107 @@
 <?php
 
-class $NAME$ extends \BaseController {
+class $NAME$ extends \BaseController
+{
 
-	/**
-	 * Display a listing of $COLLECTION$
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$$COLLECTION$ = $MODEL$::all();
+    /**
+     * Show the form for creating a new $RESOURCE$
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return View::make('$COLLECTION$.create');
+    }
 
-		return View::make('$COLLECTION$.index', compact('$COLLECTION$'));
-	}
+    /**
+     * Remove the specified $RESOURCE$ from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $MODEL$::destroy($id);
 
-	/**
-	 * Show the form for creating a new $RESOURCE$
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return View::make('$COLLECTION$.create');
-	}
+        return Redirect::route('$COLLECTION$.index');
+    }
 
-	/**
-	 * Store a newly created $RESOURCE$ in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		$validator = Validator::make($data = Input::all(), $MODEL$::$rules);
+    /**
+     * Show the form for editing the specified $RESOURCE$.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $$RESOURCE$ = $MODEL$::find($id);
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
+        return View::make('$COLLECTION$.edit', compact('$RESOURCE$'));
+    }
 
-		$MODEL$::create($data);
+    /**
+     * Display a listing of $COLLECTION$
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $$COLLECTION$ = $MODEL$::all();
 
-		return Redirect::route('$COLLECTION$.index');
-	}
+        return View::make('$COLLECTION$.index', compact('$COLLECTION$'));
+    }
 
-	/**
-	 * Display the specified $RESOURCE$.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$$RESOURCE$ = $MODEL$::findOrFail($id);
+    /**
+     * Display the specified $RESOURCE$.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $$RESOURCE$ = $MODEL$::findOrFail($id);
 
-		return View::make('$COLLECTION$.show', compact('$RESOURCE$'));
-	}
+        return View::make('$COLLECTION$.show', compact('$RESOURCE$'));
+    }
 
-	/**
-	 * Show the form for editing the specified $RESOURCE$.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$$RESOURCE$ = $MODEL$::find($id);
+    /**
+     * Store a newly created $RESOURCE$ in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        $validator = Validator::make($data = Input::all(), $MODEL$::$rules);
 
-		return View::make('$COLLECTION$.edit', compact('$RESOURCE$'));
-	}
+        if ($validator->fails())
+        {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
 
-	/**
-	 * Update the specified $RESOURCE$ in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		$$RESOURCE$ = $MODEL$::findOrFail($id);
+        $MODEL$::create($data);
 
-		$validator = Validator::make($data = Input::all(), $MODEL$::$rules);
+        return Redirect::route('$COLLECTION$.index');
+    }
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
+    /**
+     * Update the specified $RESOURCE$ in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        $$RESOURCE$ = $MODEL$::findOrFail($id);
 
-		$$RESOURCE$->update($data);
+        $validator = Validator::make($data = Input::all(), $MODEL$::$rules);
 
-		return Redirect::route('$COLLECTION$.index');
-	}
+        if ($validator->fails())
+        {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
 
-	/**
-	 * Remove the specified $RESOURCE$ from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		$MODEL$::destroy($id);
+        $$RESOURCE$->update($data);
 
-		return Redirect::route('$COLLECTION$.index');
-	}
-
+        return Redirect::route('$COLLECTION$.index');
+    }
 }
