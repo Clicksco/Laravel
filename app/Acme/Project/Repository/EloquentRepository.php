@@ -43,9 +43,35 @@ abstract class EloquentRepository implements RepositoryInterface
      * @throws Illuminate\Database\Eloquent\ModelNotFoundException If not found
      * @return Model
      */
-    public function find($id)
+    public function find($id, Array $with = [])
     {
-        return $this->model->findOrFail($id);
+        $query = $this->make($with);
+
+        return $query->findOrFail($id);
+    }
+
+    /**
+     * Return all results that have a particular relationship
+     *
+     * @param  string  $relation
+     * @param  array  $with
+     * @return boolean
+     */
+    public function has($relation, Array $with = [])
+    {
+        $entity = $this->make($with);
+
+        return $entity->has($relation)->get();
+    }
+
+    /**
+     * Provide an array of relations to return with the Entity
+     * @param  array $with
+     * @return Model
+     */
+    protected function make(Array $with = [])
+    {
+        return $this->model->with($with);
     }
 
     /**

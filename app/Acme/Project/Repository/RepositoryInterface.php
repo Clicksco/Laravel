@@ -9,7 +9,9 @@ interface RepositoryInterface
 
     public function delete($id);
 
-    public function find($id);
+    public function find($id, $with);
+
+    public function has($relation, Array $with = []);
 
     public function update($id, Array $properties);
 }
